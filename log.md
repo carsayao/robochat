@@ -8,4 +8,7 @@ A stretch goal: We want the client to be able to ask question, grab meaningful w
 
 So far, we have been able to run a python script to markovify text and generate sentences and paragraphs. Secondly, we are able to access this data from the server. What needs to be done now is set up a solid client/server.
 
+### todo
+get proper json format from python into server
+
 - miguel
