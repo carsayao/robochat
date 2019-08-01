@@ -1,6 +1,6 @@
 # robochat
 
-Speak to person of your choice!
+Speak to a person of your choice!
 
 ## run
 
