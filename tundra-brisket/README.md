@@ -1,1 +1,0 @@
-This app abstracts away the use of the Twitter APIs and Microsoft's Content Moderator APIs for the MLH Localhost/Capital One Workshops Basic Training: An Introduction to Python Skills.
