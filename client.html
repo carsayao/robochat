@@ -22,7 +22,7 @@
 			objectSocket.on('message', function(objectData) {
 				console.log('client objectData',objectData);
 				jQuery('#output')
-					.prepend(objectData.data)
+					.prepend(objectData.text + '\n')
 				;
       });
       

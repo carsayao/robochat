@@ -18,18 +18,13 @@ def main():
         # Build the model.
         text_model = markovify.Text(text)
 
-        # Print five randomly-generated sentences
-        #for i in range(5):
-        #    print(text_model.make_sentence())
-        out = { 'data': text_model.make_sentence() }
+        out = { 'text': text_model.make_sentence() }
 
         print(json.dumps(out))
         
-        """
         # Print three randomly-generated sentences of no more than 280 characters
-        for i in range(3):
-            print(text_model.make_short_sentence(280))
-        """
+        # for i in range(3):
+        #     print(text_model.make_short_sentence(280))
 
     get_text()
 
