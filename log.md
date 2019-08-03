@@ -11,7 +11,11 @@ So far, we have been able to run a python script to markovify text and generate 
 ### todo
 get proper json format from python into server
 
-- miguel
+## aug 1 thu
+I am now able to use python to generate a string, format it into json, pass it to the server, convert to a string, and finally pass it to the client. My only problem was that I wasn't turning the buffer stream from python into a proper json object.
+
+### todo
+see if we can seed the markov bot, if we can, see how to extract the most meaningful phrases or words from a sentence to seed it
 
 ## aug 03 sat
 I needed to remove quotations from the text since markovify recognized quotations as part of a word. Used `import re` to replace double quotes but for some reason there were still double quotes in the outputted text. Then I realized there were different types of double quotations so I opened the text file and copied them directly into markov.py. That seemed to do the trick.
