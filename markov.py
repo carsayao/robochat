@@ -1,4 +1,5 @@
 import markovify
+import re
 try:
     import simplejson as json
 except:
@@ -14,9 +15,19 @@ def main():
         # Get raw text as string.
         with open("iliza-shlesinger_freezing-hot.txt") as f:
             text = f.read()
+        # print(text)
+        
+        # Strip " and '
+        cleaned = text.replace('"', '')
+        cleaned = cleaned.replace('”', '')
+        cleaned = cleaned.replace('“', '')
+        # print(cleaned)
+        # cleaned = cleaned.replace("'", '')
 
         # Build the model.
-        text_model = markovify.Text(text)
+        # text_model = markovify.Text(text, well_formed=True, reject_reg="[\'|\"]")
+        # text_model = markovify.Text(text)
+        text_model = markovify.Text(cleaned)
 
         out = { 'text': text_model.make_sentence() }
 
