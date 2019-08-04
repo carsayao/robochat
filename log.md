@@ -19,3 +19,10 @@ see if we can seed the markov bot, if we can, see how to extract the most meanin
 
 ## aug 03 sat
 I needed to remove quotations from the text since markovify recognized quotations as part of a word. Used `import re` to replace double quotes but for some reason there were still double quotes in the outputted text. Then I realized there were different types of double quotations so I opened the text file and copied them directly into markov.py. That seemed to do the trick.
+
+I was able to also combine all the text of a single person's transcripts located in a dir to create a larger markov model. We can also store that model as a json to disk, and load it from disk. This should help with performance.
+
+However, I'm still trying to see if we can seed the generated text from user input. So far, Text.make_sentence_with_start() looks promising, but it seems that the word must be from a word the transcript begins a sentence with.
+
+### todo
+see if we can seed the bot
