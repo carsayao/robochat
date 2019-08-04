@@ -55,7 +55,8 @@ def main():
         with open(person + '_model.json') as fprecon:
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
-        out = { 'text': recon_model.make_sentence() }
+        # out = { 'text': recon_model.make_sentence() }
+        out = { 'text': recon_model.make_sentence_with_start('a') }
         print(json.dumps(out))
     
     def get_text(person):
