@@ -25,4 +25,5 @@ I was able to also combine all the text of a single person's transcripts located
 However, I'm still trying to see if we can seed the generated text from user input. So far, Text.make_sentence_with_start() looks promising, but it seems that the word must be from a word the transcript begins a sentence with.
 
 ### todo
-see if we can seed the bot
+see if we can seed the bot.
+can we assign a BEGIN to each word in the json model?
