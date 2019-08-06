@@ -31,4 +31,5 @@ see if we can seed the bot
 Basic tidying after React lecture. Created /src to hold all source code. Placed texts into /texts. Modified code to handle new directories.
 
 ### todo
-see if we can seed the bot
+see if we can seed the bot.
+can we assign a BEGIN to each word in the json model?
