@@ -67,12 +67,12 @@ def main():
         else:
             # print('"' + person + '_model.json" does not exist')
             gen_model(person)
-            print('gen')
             load_model(person)
+            print('gen')
             print('load')
 
     # Setup our input/output
-    path = os.getcwd()
+    path = os.path.dirname(os.path.realpath(__file__))
     print('path', path)
     inputDir = path + '/../texts/'
     print('inputDir', inputDir)
@@ -80,11 +80,9 @@ def main():
     print('outputDir', outputDir)
     person = 'iliza'
 
-    try:
+    if not os.path.exists(outputDir):
         os.mkdir(outputDir)
-        get_text(person)
-    except:
-        get_text(person)
+    get_text(person)
 
 
 if __name__ == '__main__':

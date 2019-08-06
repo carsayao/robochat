@@ -26,3 +26,9 @@ However, I'm still trying to see if we can seed the generated text from user inp
 
 ### todo
 see if we can seed the bot
+
+## aug 05 mon
+Basic tidying after React lecture. Created /src to hold all source code. Placed texts into /texts. Modified code to handle new directories.
+
+### todo
+see if we can seed the bot
