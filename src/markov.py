@@ -28,12 +28,19 @@ def main():
 
     def gen_model(person):
         # Get raw text as string.
-        concat = ''
+        text = ''
+        onlyfiles = next(os.walk(inputDir+person+'/'))[2]
+        print('onlyfiles', onlyfiles)
+        print("inputDir+person+'/'",inputDir+person+'/')
+        print('onlyfiles',len(onlyfiles))
         for file in os.listdir(inputDir + person + '/'):
             with open(inputDir + person + '/' + file) as f:
-                concat += '\n' + f.read()
+                if len(onlyfiles) > 1:
+                    text += '\n' + f.read()
+                else:
+                    text = f.read()
         # Clean transcript        
-        cleaned = clean_text(concat)
+        cleaned = clean_text(text)
         # Build the model.
         text_model = markovify.Text(cleaned, state_size=2)
         # Turn into json
@@ -54,8 +61,8 @@ def main():
         with open(outputDir + person + '_model.json') as fprecon:
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
-        # out = { 'text': recon_model.make_sentence() }
-        out = { 'text': recon_model.make_sentence_with_start('a') }
+        out = { 'text': recon_model.make_sentence() }
+        # out = { 'text': recon_model.make_sentence_with_start('a') }
         print(json.dumps(out))
     
     def get_text(person):
@@ -78,7 +85,7 @@ def main():
     print('inputDir', inputDir)
     outputDir = path + '/../models/'
     print('outputDir', outputDir)
-    person = 'iliza'
+    person = 'test'
 
     if not os.path.exists(outputDir):
         os.mkdir(outputDir)
