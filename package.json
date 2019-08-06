@@ -1,0 +1,21 @@
+{
+  "name": "robochat",
+  "version": "0.1.0",
+  "description": "Speak to a person of your choice!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carsayao/robochat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carsayao/robochat/issues"
+  },
+  "homepage": "https://github.com/carsayao/robochat#readme",
+  "dependencies": {}
+}

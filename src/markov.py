@@ -8,6 +8,7 @@ except:
     import json
 
 def main():
+
     # test
     def get_json():
         out = { 'key': 'value', 'key2': 'value2' }
@@ -27,12 +28,10 @@ def main():
 
     def gen_model(person):
         # Get raw text as string.
-        directory = person
         concat = ''
-        for file in os.listdir(directory + '/'):
-            with open(directory+ '/' + file) as f:
+        for file in os.listdir(inputDir + person + '/'):
+            with open(inputDir + person + '/' + file) as f:
                 concat += '\n' + f.read()
-
         # Clean transcript        
         cleaned = clean_text(concat)
         # Build the model.
@@ -40,7 +39,7 @@ def main():
         # Turn into json
         model_json = text_model.to_json()
         # Write model to json
-        with open(directory + "_model.json", "w+") as fpjson:
+        with open(outputDir + person + '_model.json', 'w+') as fpjson:
             json.dump(model_json, fpjson)
         # out = { 'text': text_model.make_sentence() }
 
@@ -52,7 +51,7 @@ def main():
     
     def load_model(person):
         # Load model from json
-        with open(person + '_model.json') as fprecon:
+        with open(outputDir + person + '_model.json') as fprecon:
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
         # out = { 'text': recon_model.make_sentence() }
@@ -60,17 +59,32 @@ def main():
         print(json.dumps(out))
     
     def get_text(person):
-        myfile = Path('./' + person + '_' + 'model.json')
+        myfile = Path(outputDir + person + '_' + 'model.json')
         if myfile.is_file():
             # print('"' + person + '_model.json" exists')
             load_model(person)
+            print('load')
         else:
             # print('"' + person + '_model.json" does not exist')
             gen_model(person)
+            print('gen')
             load_model(person)
+            print('load')
 
-    # gen_model()
-    get_text('iliza')
+    # Setup our input/output
+    path = os.getcwd()
+    print('path', path)
+    inputDir = path + '/../texts/'
+    print('inputDir', inputDir)
+    outputDir = path + '/../models/'
+    print('outputDir', outputDir)
+    person = 'iliza'
+
+    try:
+        os.mkdir(outputDir)
+        get_text(person)
+    except:
+        get_text(person)
 
 
 if __name__ == '__main__':
