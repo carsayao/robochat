@@ -18,8 +18,8 @@ def main():
 
         # Strip and replace special characters
         cleaned = text.replace('"', '')
-        cleaned = cleaned.replace('”', '')
-        cleaned = cleaned.replace('“', '')
+        cleaned = cleaned.replace('”', '"')
+        cleaned = cleaned.replace('“', '"')
         cleaned = cleaned.replace('’', "'")
         cleaned = cleaned.replace('‘', "'")
         cleaned = cleaned.replace('#', "'")
@@ -39,10 +39,15 @@ def main():
                     text += '\n' + f.read()
                 else:
                     text = f.read()
+        # Check what the text is
+        with open(inputDir+person+'_cat.txt','w+') as test:
+            test.write(text)
         # Clean transcript        
         cleaned = clean_text(text)
-        # Build the model.
-        text_model = markovify.Text(cleaned, state_size=2)
+        with open(inputDir+person+'_cleancat.txt','w+') as fclean:
+            fclean.write(cleaned)
+        # Build the model, reject_reg rejects bracketed text
+        text_model = markovify.Text(cleaned, state_size=2)#, reject_reg='\[.*?\][ \t\n]*')
         # Turn into json
         model_json = text_model.to_json()
         # Write model to json
@@ -61,8 +66,11 @@ def main():
         with open(outputDir + person + '_model.json') as fprecon:
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
-        out = { 'text': recon_model.make_sentence(init_state='family') }
-        # out = { 'text': recon_model.make_sentence() }
+
+        response = recon_model.make_sentence(init_state=('standing', 'in'))
+        # response = recon_model.make_sentence() 
+        out = { 'text': response }
+
         # out = { 'text': recon_model.make_sentence_with_start('a') }
         print(json.dumps(out))
     
@@ -86,7 +94,7 @@ def main():
     print('inputDir', inputDir)
     outputDir = path + '/../models/'
     print('outputDir', outputDir)
-    person = 'test'
+    person = 'iliza'
 
     if not os.path.exists(outputDir):
         os.mkdir(outputDir)
