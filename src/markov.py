@@ -67,7 +67,7 @@ def main():
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
 
-        response = recon_model.make_sentence(init_state=('standing', 'in'))
+        response = recon_model.make_sentence(init_state=('standing', ''))
         # response = recon_model.make_sentence() 
         out = { 'text': response }
 

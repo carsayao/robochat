@@ -56,8 +56,7 @@ what does prefix contain?
     [[\\\"ahead\\\", \\\"and\\\"], {\\\"do\\\": 1}], 
     [[\\\"and\\\", \\\"do\\\"], {\\\"the\\\": 1}], 
     [[\\\"do\\\", \\\"the\\\"], {\\\"lights.\\\": 1}], 
-    [[\\\"the\\\", \\\"lights.\\\"], {\\\"___END__\\\": 1}]]\",
-  \"parsed_sentences\":                         
+    [[\\\"the\\\", \\\"lights.\\\"], {\\\"___END__\\\": 1}]]\", \"parsed_sentences\":                         
     [[\"this\", \"is\", \"a\", \"test\", \"for\", \"the\", \"markovify\", \"package.\", \"i\", \"want\",      \"to\", \"see\", \"if\", \"we\", \"can\", \"somehow\", \"assign\", \"a\", \"begin\", \"to\", \"each\",        \"word\", \"in\", \"the\", \"json\", \"model.\", \"do\", \"you\", \"think\", \"that\", \"is\", \"possible?\", \"let's\", \"run\", \"our\", \"code\", \"and\", \"find\", \"out.\"], [\"go\", \"ahead\", \"and\", \"do\",     \"the\", \"lights.\"]]}"
 
 
@@ -81,40 +80,5 @@ what does prefix contain?
     [["and", "women"], {"are": 2}], 
     [["women", "are"], {"considered": 1, "wired": 1}],
     [["are", "considered"], {"equal,": 1}], 
-
-chain.py:93
-
-print(self.model[('standing', 'in')])
-None
-{'the': 1}
-
-print(self.model[('standing', 'in')].items())
-None
-dict_items([('the', 1)])
-
-print(*self.model[('standing', 'in')].items())
-None
-('the', 1)
-
-print(zip(*self.model[('standing', 'in')].items()))
-None
-<zip object at 0x7fcafc075948>
-
-chain.py:94
-
-print(choices)
-None
-('the',)
-print(weights)
-None
-(1,)
-print(accumulate(weights))
-None
-<generator object accumulate at 0x7fb4981f34f8>
-print(list(accumulate(weights)))
-None
-[1]
-
-return model[state] where position of one item in state
 
 
