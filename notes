@@ -136,4 +136,59 @@ print(list(accumulate(weights)))
 None
 [1]
 
+either:
 return model[state] where position of one item in state
+or
+try to return where only one variable in init_state matches a state
+
+
+print( state)
+None
+('standing', 'in')
+
+print(type(state))
+None
+<class 'tuple'>
+
+print(type(state[0]))
+None
+<class 'str'>
+
+print("standing" in state)
+None
+True
+
+print("fire" in state)
+None
+False
+
+print(type(self.model))
+None
+<class 'dict'>
+
+print(*self.model)
+returns keys of model
+
+print(self.model)
+returns whole dictionary
+
+print(type(('key','value')))
+None
+<class 'tuple'>
+
+
+for keytuple in dict:
+	if input in keytuple:
+		return keytuple
+
+
+
+
+
+
+
+
+
+
+
+

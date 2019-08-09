@@ -30,9 +30,9 @@ def main():
         # Get raw text as string.
         text = ''
         onlyfiles = next(os.walk(inputDir+person+'/'))[2]
-        print('onlyfiles', onlyfiles)
-        print("inputDir+person+'/'",inputDir+person+'/')
-        print('onlyfiles',len(onlyfiles))
+        # print('onlyfiles', onlyfiles)
+        # print("inputDir+person+'/'",inputDir+person+'/')
+        # print('onlyfiles',len(onlyfiles))
         for file in os.listdir(inputDir + person + '/'):
             with open(inputDir + person + '/' + file) as f:
                 if len(onlyfiles) > 1:
@@ -67,8 +67,8 @@ def main():
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
 
-        response = recon_model.make_sentence(init_state=('standing', ''))
-        # response = recon_model.make_sentence() 
+        # TODO: testing user input with init_state
+        response = recon_model.make_sentence(init_state=('standi', '')) # response = recon_model.make_sentence() 
         out = { 'text': response }
 
         # out = { 'text': recon_model.make_sentence_with_start('a') }
@@ -79,21 +79,21 @@ def main():
         if myfile.is_file():
             # print('"' + person + '_model.json" exists')
             load_model(person)
-            print('load')
+            # print('load')
         else:
             # print('"' + person + '_model.json" does not exist')
             gen_model(person)
             load_model(person)
-            print('gen')
-            print('load')
-
+            # print('gen')
+            # print('load')
+    
     # Setup our input/output
     path = os.path.dirname(os.path.realpath(__file__))
-    print('path', path)
+    # print('path', path)
     inputDir = path + '/../texts/'
-    print('inputDir', inputDir)
+    # print('inputDir', inputDir)
     outputDir = path + '/../models/'
-    print('outputDir', outputDir)
+    # print('outputDir', outputDir)
     person = 'iliza'
 
     if not os.path.exists(outputDir):

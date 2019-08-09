@@ -33,3 +33,19 @@ Basic tidying after React lecture. Created /src to hold all source code. Placed 
 ### todo
 see if we can seed the bot.
 can we assign a BEGIN to each word in the json model?
+
+## aug 8 fri
+Got close.
+
+To seed a generated sentence, we may pass in an init_state when calling the markovify.Text.make_sentence(state) from markov.py, where state must be a tuple that exists in the keys of the markovify model dictionary. I modified the markovify lib file chain.py so that when Text.make_sentence() calls self.chain.walk(init_state), it accepts init_state with only the first arg filled in. This is done with the function find_state(state) in chain.py. It takes the first arg of state, which should be what the user passed in, and iteratese through the keys of the dictionary until it finds an instance of the input in a key. The found key is then passed back as the inital state.
+
+It works, but spelling has to be exact. For instance `init_state=('standing','')` works, but `init_state=('standi','')` does not. `('family','') ` does not work but `('family,','')` does. We need to work on being able to account for these discrepencies.
+
+One way to do this is to find the Levenshtein distance between two strings. The shorter the distance, the closer the match.
+
+I found a Levenshtein implementation in the pyAudioAnalysis library that I've copied into src/test. Haven't got this working yet, but once it's finished, we should be just about done with the back end. The nltk (natural language toolkit) may be worthwhile to look at but I haven't yet had a chance to look at it.
+
+To find my code, go to lib/markovify and run the command `grep -rnw './' -e 'M:'`. I marked where user input would be added with a `TODO` in markov.py.
+
+### todo
+use a levenshtein, or similar, implementation to match user input strings to the closest match in the generated markov model's keys.
