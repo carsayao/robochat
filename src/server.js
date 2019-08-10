@@ -29,7 +29,8 @@ io.on('connection', function(objectSocket) {
       return spawn('python3', [
         // M: unbuffered output
         // '-u',
-        path.join(__dirname, 'markov.py')
+        path.join(__dirname, 'markov.py'),
+        objectData.strQuery
       ]);
     }
     const subprocess = getPython();

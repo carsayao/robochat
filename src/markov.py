@@ -63,7 +63,10 @@ def main():
 
         # TODO: testing user input with init_state
         response = recon_model.make_sentence(init_state=(query, '')) # response = recon_model.make_sentence() 
-        out = { 'text': response }
+        if response is None:
+            out = { 'text': "I don't know what to say to that..." }
+        else:
+            out = { 'text': response }
 
         print(json.dumps(out))
     

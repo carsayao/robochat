@@ -181,7 +181,14 @@ for keytuple in dict:
 	if input in keytuple:
 		return keytuple
 
-
+    
+    # M: iterate through model dict. if state[0] (user input str), return tuple
+    def find_state(self, state):
+        """
+        """
+        for key in self.model:
+            if state[0] in key:
+                print("found key", key)
 
 
 

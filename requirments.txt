@@ -1,2 +1,6 @@
 markovify==1.1.1
-simplejson==
+simplejson==3.16.0
+nltk==3.3.4
+numpy==1.16.4
+# run the following command:
+# pip3 install -r requirements.txt
