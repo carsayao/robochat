@@ -38,6 +38,6 @@ nouns = [word for (word, pos) in nltk.pos_tag(tokenized) if is_noun(pos)]
 
 #print(nouns)
 #print(random.choice(nouns))
-print(levenshtein('family,', 'family'))
+print(levenshtein('family ', 'family'))
 
 
