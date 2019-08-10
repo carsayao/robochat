@@ -34,7 +34,7 @@ Basic tidying after React lecture. Created /src to hold all source code. Placed 
 see if we can seed the bot.
 can we assign a BEGIN to each word in the json model?
 
-## aug 8 fri
+## aug 8 thu
 Got close.
 
 To seed a generated sentence, we may pass in an init_state when calling the markovify.Text.make_sentence(state) from markov.py, where state must be a tuple that exists in the keys of the markovify model dictionary. I modified the markovify lib file chain.py so that when Text.make_sentence() calls self.chain.walk(init_state), it accepts init_state with only the first arg filled in. This is done with the function find_state(state) in chain.py. It takes the first arg of state, which should be what the user passed in, and iteratese through the keys of the dictionary until it finds an instance of the input in a key. The found key is then passed back as the inital state.
@@ -50,5 +50,10 @@ To find my code, go to lib/markovify and run the command `grep -rnw './' -e 'M:'
 ### todo
 use a levenshtein, or similar, implementation to match user input strings to the closest match in the generated markov model's keys.
 
-### todo
+## aug 9 fri
+Found a working Levenshtein implementation and it tested great. Added nltk (natural language toolkit) to find nouns of a sentence, then randomly choose one noun to seed generation.
 
+Also got to set up a virtualenv that includes my forked markovify library that allows for seeding sentence generation.
+
+### todo
+add the Levenshtein function and nltk methods to forked lib and we can have a somewhat engaging chatroom. 
