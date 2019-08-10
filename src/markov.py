@@ -1,6 +1,7 @@
 import markovify
 import re
 import os.path
+import sys
 from pathlib import Path
 try:
     import simplejson as json
@@ -53,37 +54,29 @@ def main():
         # Write model to json
         with open(outputDir + person + '_model.json', 'w+') as fpjson:
             json.dump(model_json, fpjson)
-        # out = { 'text': text_model.make_sentence() }
-
-        # print(json.dumps(out))
         
-        # Print three randomly-generated sentences of no more than 280 characters
-        # for i in range(3):
-        #     print(text_model.make_short_sentence(280))
-    
-    def load_model(person):
+    def load_model(person, query):
         # Load model from json
         with open(outputDir + person + '_model.json') as fprecon:
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
 
         # TODO: testing user input with init_state
-        response = recon_model.make_sentence(init_state=('standi', '')) # response = recon_model.make_sentence() 
+        response = recon_model.make_sentence(init_state=(query, '')) # response = recon_model.make_sentence() 
         out = { 'text': response }
 
-        # out = { 'text': recon_model.make_sentence_with_start('a') }
         print(json.dumps(out))
     
-    def get_text(person):
+    def get_text(person, query):
         myfile = Path(outputDir + person + '_' + 'model.json')
         if myfile.is_file():
             # print('"' + person + '_model.json" exists')
-            load_model(person)
+            load_model(person, query)
             # print('load')
         else:
             # print('"' + person + '_model.json" does not exist')
             gen_model(person)
-            load_model(person)
+            load_model(person, query)
             # print('gen')
             # print('load')
     
@@ -98,7 +91,11 @@ def main():
 
     if not os.path.exists(outputDir):
         os.mkdir(outputDir)
-    get_text(person)
+    try:
+        query = sys.argv[1]
+        get_text(person, query)
+    except Exception:
+        print(json.dumps({ "text": "Sorry, I'm having trouble understanding you..." }))
 
 
 if __name__ == '__main__':

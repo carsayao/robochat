@@ -91,30 +91,11 @@ class Chain(object):
             if (state[0] in key):
                 return key
 
-    def init_move(self, state):
-        """
-        Given a state, choose the next item at random.
-        """
-        # M:
-        state = self.find_state(state)
-
-        if state == tuple([ BEGIN ] * self.state_size):
-            # M: break tuple up into list of tuple's contents
-            choices = self.begin_choices
-            cumdist = self.begin_cumdist
-        else:
-            choices, weights = zip(*self.model[state].items())
-            cumdist = list(accumulate(weights))
-        r = random.random() * cumdist[-1]
-        selection = choices[bisect.bisect(cumdist, r)]
-        return selection
-
     def move(self, state):
         """
         Given a state, choose the next item at random.
         """
         if state == tuple([ BEGIN ] * self.state_size):
-            # M: break tuple up into list of tuple's contents
             choices = self.begin_choices
             cumdist = self.begin_cumdist
         else:
@@ -136,10 +117,7 @@ class Chain(object):
         state = self.find_state(init_state)
 
         while True:
-            # M: original
             next_word = self.move(state)
-            # M: mine
-            # next_word = self.init_move(state)
             if next_word == END: break
             yield next_word
             state = tuple(state[1:]) + (next_word,)

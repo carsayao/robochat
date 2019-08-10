@@ -35,10 +35,11 @@
 				;
       });
       
-      $('#submit')
-        .on('click', () => {
-          objectSocket.emit('message',{
-            'str': 'hello'
+      jQuery('#submit')
+        .on('click', function() {
+					console.log(jQuery('#message').val())
+          objectSocket.emit('message', {
+            'strQuery': jQuery('#message').val()
           });
           console.log('click');
         })

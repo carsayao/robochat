@@ -12,10 +12,18 @@ server.use('/', express.static(__dirname + '/'));
 
 var io = socket(server.listen(process.env.PORT || 8080));
 
-io.on('connection', (objectSocket) => {
+io.on('connection', function(objectSocket) {
   console.log('connection!');
 
-  objectSocket.on('message', (objectData) => {
+  io.emit('message', {
+    'text': 'Welcome to my chatroom!'
+  });
+
+  objectSocket.on('message', function(objectData) {
+
+    // console.log('objectData',objectData.strQuery);
+    console.log('objectData',objectData);
+
     // https://www.tutorialspoint.com/run-python-script-from-node-js-using-child-process-spawn-method
     function getPython() {
       return spawn('python3', [
@@ -25,18 +33,18 @@ io.on('connection', (objectSocket) => {
       ]);
     }
     const subprocess = getPython();
-    subprocess.stdout.on('data', (data) => {
-      objectSocket.emit('message', JSON.parse(data.toString()));
+    subprocess.stdout.on('data', function(data) {
+      io.emit('message', JSON.parse(data.toString()));
     });
-    subprocess.stderr.on('data', (data) => {
+    subprocess.stderr.on('data', function(data) {
       console.log(`error:${data}`);
     });
-    subprocess.stderr.on('close', () => {
+    subprocess.stderr.on('close', function() {
       console.log("Closed");
     });
   });
 
-  objectSocket.on('disconnect', () => {
+  objectSocket.on('disconnect', function() {
     console.log('disconnection!');
   });
 
