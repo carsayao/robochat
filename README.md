@@ -6,14 +6,23 @@ Speak to a person of your choice!
 
 Requires node, express, socketio. Run `node server.js` then open http://localhost:8080/client.html.
 
-Requirements for python:
-- python3
-- pip3 (package manager)
-- markovify
-- simplejson
-- nltk
+### virtualenv
+    pip3 install virtualenv
 
-Run `pip3 install -r requirements.txt`.
+    virtualenv -p python3 env
+
+This will install virtualenv using pip3 and create a an `env` folder that will contain the libraries brought it.
+
+    source env/bin/activate
+
+This will put your shell into the virtual environment where you will have the libraries brought it.
+
+    pip3 install -r requirements.txt
+    
+This will install the libraries that are found in the `requirements.txt`
+When you are done working, use `deactivate` to get out of the virtual environment
+
+### additional required packages
 
 To install required nltk packages, run python3 interpreter:
 
@@ -33,7 +42,6 @@ Requirements for python:
 - pip3 (package manager)
 - markovify 1.1.1
 - simplejson 3.16.0
-
 
 ## todo
 
