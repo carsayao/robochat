@@ -4,7 +4,7 @@ Speak to a person of your choice!
 
 ## install
 
-Requires node, express, socketio. Run `node server.js` then open http://localhost:8080/client.html.
+Requires node, express, socketio.
 
 ### virtualenv
     pip3 install virtualenv
@@ -24,6 +24,14 @@ When you are done working, use `deactivate` to get out of the virtual environmen
 
 ### additional required packages
 
+Requirements for python:
+- python3
+- pip3 (package manager)
+- markovify (custom)
+- simplejson 3.16.0
+- nltk 3.4.4
+- numpy 1.16.4
+
 To install required nltk packages, run python3 interpreter:
 
 ```python
@@ -35,13 +43,7 @@ nltk.download('averaged_perceptron_tagger')
 
 ## run
 
-Requires node, express, socketio. Run `node server.js` then open http://localhost:8080/client.html.
-
-Requirements for python:
-- python3
-- pip3 (package manager)
-- markovify 1.1.1
-- simplejson 3.16.0
+Run `node server.js` then open http://localhost:8080/client.html.
 
 ## todo
 
