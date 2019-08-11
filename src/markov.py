@@ -1,5 +1,8 @@
 import markovify
+import datetime
+import random
 import re
+import nltk
 import os.path
 import sys
 from pathlib import Path
@@ -30,16 +33,19 @@ def main():
     def gen_model(person):
         # Get raw text as string.
         text = ''
-        onlyfiles = next(os.walk(inputDir+person+'/'))[2]
+        # onlyfiles = next(os.walk(inputDir+person+'/'))[2]
+
         # print('onlyfiles', onlyfiles)
         # print("inputDir+person+'/'",inputDir+person+'/')
         # print('onlyfiles',len(onlyfiles))
         for file in os.listdir(inputDir + person + '/'):
             with open(inputDir + person + '/' + file) as f:
-                if len(onlyfiles) > 1:
-                    text += '\n' + f.read()
-                else:
-                    text = f.read()
+                text += '\n' + f.read()
+                # if len(onlyfiles) > 1:
+                #     text += '\n' + f.read()
+                # else:
+                #     text = f.read()
+
         # Check what the text is
         with open(inputDir+person+'_cat.txt','w+') as test:
             test.write(text)
@@ -55,48 +61,92 @@ def main():
         with open(outputDir + person + '_model.json', 'w+') as fpjson:
             json.dump(model_json, fpjson)
         
-    def load_model(person, query):
+    def load_model(person, word):
         # Load model from json
         with open(outputDir + person + '_model.json') as fprecon:
             recon_json = json.load(fprecon)
         recon_model = markovify.Text.from_json(recon_json)
 
         # TODO: testing user input with init_state
-        response = recon_model.make_sentence(init_state=(query, '')) # response = recon_model.make_sentence() 
+        response = recon_model.make_sentence(init_state=(word,''), tries=10, test_output=True, mot=15) # response = recon_model.make_sentence() 
         if response is None:
             out = { 'text': "I don't know what to say to that..." }
         else:
             out = { 'text': response }
 
         print(json.dumps(out))
-    
-    def get_text(person, query):
+      
+    def get_text(person, word):
         myfile = Path(outputDir + person + '_' + 'model.json')
         if myfile.is_file():
             # print('"' + person + '_model.json" exists')
-            load_model(person, query)
-            # print('load')
+            load_model(person, word)
+            print('load')
         else:
             # print('"' + person + '_model.json" does not exist')
             gen_model(person)
-            load_model(person, query)
-            # print('gen')
-            # print('load')
+            load_model(person, word)
+            print('gen')
+            print('load')
     
+    def nouns(query):
+        # https://stackoverflow.com/a/33587889
+        # function to test if something is a noun
+        # print('query',query)
+        is_noun = lambda pos: pos[:2] == 'NN'
+        # print('time', datetime.datetime.now())
+        seed = str(datetime.datetime.now())[-6:]
+        # print(seed)
+        try:
+            # do the nlp stuff
+            tokenized = nltk.word_tokenize(query)
+            nouns = [word for (word, pos) in nltk.pos_tag(tokenized) if is_noun(pos)]
+            random.seed(a=seed)
+            word = random.choice(nouns)
+            print('random word',word)
+            return word
+        except:
+            # out = { 'text': "i don't know what to say to that..." }
+            # print(json.dumps(out))
+            return
+      
     # Setup our input/output
     path = os.path.dirname(os.path.realpath(__file__))
     # print('path', path)
-    inputDir = path + '/../texts/'
+    # inputDir = path + '/../texts/'
+    inputDir = path + '/texts/'
     # print('inputDir', inputDir)
-    outputDir = path + '/../models/'
+    # outputDir = path + '/../models/'
+    outputDir = path + '/models/'
     # print('outputDir', outputDir)
     person = 'iliza'
+
+    query = sys.argv[1]
+    if len(query) == 0:
+        out = { 'text': 'anyone there? hello?' }
+        print(json.dumps(out))
+        exit()
+    print(query)
+    # word = ' '.join(nouns(query))
+    # Strip and replace special characters for nltk tokenizer
+    query = query.replace("'", '')
+    query = query.replace('"', '')
+    query = query.replace('"', '')
+    query = query.replace('”', '')
+    query = query.replace('“', '')
+    query = query.replace('’', "")
+    query = query.replace('‘', "")
+    query = query.replace('#', "")
+    query = query.lower()
+    print('cleaned query', query)
+    word = nouns(query)
+    print('chosen word',word)
+
 
     if not os.path.exists(outputDir):
         os.mkdir(outputDir)
     try:
-        query = sys.argv[1]
-        get_text(person, query)
+        get_text(person, word)
     except Exception:
         print(json.dumps({ "text": "Sorry, I'm having trouble understanding you..." }))
 

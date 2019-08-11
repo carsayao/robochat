@@ -22,7 +22,7 @@ io.on('connection', function(objectSocket) {
   objectSocket.on('message', function(objectData) {
 
     // console.log('objectData',objectData.strQuery);
-    console.log('objectData',objectData);
+    console.log('objectData', typeof objectData.strQuery == 'string');
 
     // https://www.tutorialspoint.com/run-python-script-from-node-js-using-child-process-spawn-method
     function getPython() {
