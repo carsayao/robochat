@@ -5,10 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      // "type": "node",
+      // "request": "launch",
+      "name": "Python: Launch Program",
+      "type": "python",
       "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/server.js"
+      // "program": "${workspaceFolder}/server.js",
+      "program": "/home/meegs/Projects/robochat/src/markov.py",
+      "args": ["what do you think of men and women?"],
+      "justMyCode": false,
     }
   ]
 }

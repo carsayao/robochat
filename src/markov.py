@@ -81,13 +81,13 @@ def main():
         if myfile.is_file():
             # print('"' + person + '_model.json" exists')
             load_model(person, word)
-            print('load')
+            #print('load')
         else:
             # print('"' + person + '_model.json" does not exist')
             gen_model(person)
             load_model(person, word)
-            print('gen')
-            print('load')
+            # print('gen')
+            # print('load')
     
     def nouns(query):
         # https://stackoverflow.com/a/33587889
@@ -103,7 +103,7 @@ def main():
             nouns = [word for (word, pos) in nltk.pos_tag(tokenized) if is_noun(pos)]
             random.seed(a=seed)
             word = random.choice(nouns)
-            print('random word',word)
+            # print('random word',word)
             return word
         except:
             # out = { 'text': "i don't know what to say to that..." }
@@ -113,11 +113,11 @@ def main():
     # Setup our input/output
     path = os.path.dirname(os.path.realpath(__file__))
     # print('path', path)
-    # inputDir = path + '/../texts/'
-    inputDir = path + '/texts/'
+    inputDir = path + '/../texts/'
+    # inputDir = path + '/texts/'
     # print('inputDir', inputDir)
-    # outputDir = path + '/../models/'
-    outputDir = path + '/models/'
+    outputDir = path + '/../models/'
+    # outputDir = path + '/models/'
     # print('outputDir', outputDir)
     person = 'iliza'
 
@@ -126,7 +126,7 @@ def main():
         out = { 'text': 'anyone there? hello?' }
         print(json.dumps(out))
         exit()
-    print(query)
+    # print(query)
     # word = ' '.join(nouns(query))
     # Strip and replace special characters for nltk tokenizer
     query = query.replace("'", '')
@@ -138,9 +138,9 @@ def main():
     query = query.replace('‘', "")
     query = query.replace('#', "")
     query = query.lower()
-    print('cleaned query', query)
+    # print('cleaned query', query)
     word = nouns(query)
-    print('chosen word',word)
+    # print('chosen word',word)
 
 
     if not os.path.exists(outputDir):
