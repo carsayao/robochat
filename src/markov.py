@@ -81,7 +81,7 @@ def main():
         if myfile.is_file():
             # print('"' + person + '_model.json" exists')
             load_model(person, word)
-            #print('load')
+            # print('load')
         else:
             # print('"' + person + '_model.json" does not exist')
             gen_model(person)
@@ -129,6 +129,7 @@ def main():
         }
         print(json.dumps(out))
         exit()
+        
     # print(query)
     # word = ' '.join(nouns(query))
     # Strip and replace special characters for nltk tokenizer
@@ -151,7 +152,10 @@ def main():
     try:
         get_text(person, word)
     except Exception:
-        print(json.dumps({ "text": "Sorry, I'm having trouble understanding you..." }))
+        print(json.dumps({ 
+            "username": person,
+            "text": "Sorry, I'm having trouble understanding you..."
+        }))
 
 
 if __name__ == '__main__':

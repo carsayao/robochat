@@ -4,6 +4,7 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
     {
       // "type": "node",
       // "request": "launch",
@@ -11,8 +12,8 @@
       "type": "python",
       "request": "launch",
       // "program": "${workspaceFolder}/server.js",
-      "program": "/home/meegs/Projects/robochat/src/markov.py",
-      "args": ["davec", "what do you think of men and women?"],
+      "program": "/home/meegs/Documents/465/robochat/src/markov.py",
+      "args": ["davec", "random"],
       "justMyCode": false,
     }
   ]
