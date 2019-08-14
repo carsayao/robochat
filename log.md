@@ -57,3 +57,13 @@ Also got to set up a virtualenv that includes my forked markovify library that a
 
 ### todo
 add the Levenshtein function and nltk methods to forked lib and we can have a somewhat engaging chatroom. 
+
+## aug 14 wed
+I haven't updated the log in the past few days. Mostly because I've been working on the same tasks. I was able to add the Levenshtein function to the markovify library. The find_state() function in chain.py works great now. However, sometimes the random noun chosen to generate a sentence is not able to hook onto the markov chail model. I could fix this by only allowing the set of words whose Levenshtein distance---between the queryWord and init_state---is equal to the previous *failed* iteration plus 1. This ensures a different word will be used. For instance, if the queryWord is 'guy' and the algorithm finds 'guy' in the set of states in the model, the LevDist=0 and it is chosen because it is the closest match. However, this may be a bad state to attempt the seed and may return null. Say 'guys' is able to hook and generate. If we could allow only LevDist+1 words, such as 'guys', upon failure, then we are more likely to return a sentence.
+
+I poked around online and found that I shouldn't muck in the installed package library. Users recommended forking the repo to make changes, then download that custom repo with `virtualenv`. So that's what I did. [Link here](https://github.com/carsayao/markovify). (After really digging into the code, I found there *was* a method to seed without being forced to only use `__BEGIN__` states, oh well.)
+
+Two more features I'd like to add is to able to have the queryWord be anywhere in the sentence. I haven't looked into at all yet, but I'd imagine this requires walking backward. The other would be to seed with not just nouns, and more that one seed. This would surely give more results and more interesting sentences.
+
+Overall, I had a ton of fun putting this project together. Testing the model was highly entertaining since these are some of my favorite comedians and the sentences they were generating were hilarious. The markov chat feature definitely ate most my time which meant the front end was lacking. (Add more)
+

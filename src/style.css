@@ -2,6 +2,11 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+.card {
+    width: 100%;
+    height: auto;
+}
+
 #message {
   margin-top: 20px;
 }
