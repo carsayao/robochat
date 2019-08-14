@@ -17,5 +17,9 @@
     "url": "https://github.com/carsayao/robochat/issues"
   },
   "homepage": "https://github.com/carsayao/robochat#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.17.1",
+    "js-yaml": "^3.13.1",
+    "socketio": "^1.0.0"
+  }
 }
