@@ -1,8 +1,11 @@
 {
-  "name": "robochat",
-  "version": "0.1.0",
-  "description": "Speak to a person of your choice!",
+  "name": "src",
+  "version": "0.2.0",
+  "description": "Simple Markov chatbot",
   "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -11,11 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/carsayao/robochat.git"
   },
-  "author": "",
+  "author": "Carlos Miguel Sayao",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/carsayao/robochat/issues"
   },
-  "homepage": "https://github.com/carsayao/robochat#readme",
-  "dependencies": {}
+  "homepage": "https://github.com/carsayao/robochat#readme"
 }
