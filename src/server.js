@@ -12,6 +12,12 @@ server.use('/', express.static(__dirname + '/'));
 
 var io = socket(server.listen(process.env.PORT || 8080));
 
+server.get('/', (req, res) => {
+  res.status(302);
+  res.set({ 'content-type': 'text/plain' });
+  res.redirect('/client.html');
+});
+
 io.on('connection', function(objectSocket) {
   console.log('connection!');
 
