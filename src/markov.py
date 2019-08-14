@@ -33,26 +33,20 @@ def main():
     def gen_model(person):
         # Get raw text as string.
         text = ''
-        # onlyfiles = next(os.walk(inputDir+person+'/'))[2]
 
-        # print('onlyfiles', onlyfiles)
-        # print("inputDir+person+'/'",inputDir+person+'/')
-        # print('onlyfiles',len(onlyfiles))
         for file in os.listdir(inputDir + person + '/'):
             with open(inputDir + person + '/' + file) as f:
                 text += '\n' + f.read()
-                # if len(onlyfiles) > 1:
-                #     text += '\n' + f.read()
-                # else:
-                #     text = f.read()
 
         # Check what the text is
-        with open(inputDir+person+'_cat.txt','w+') as test:
-            test.write(text)
+        # with open(inputDir+person+'_cat.txt','w+') as test:
+            # test.write(text)
+
         # Clean transcript        
         cleaned = clean_text(text)
-        with open(inputDir+person+'_cleancat.txt','w+') as fclean:
-            fclean.write(cleaned)
+        # with open(inputDir+person+'_cleancat.txt','w+') as fclean:
+            # fclean.write(cleaned)
+
         # Build the model, reject_reg rejects bracketed text
         text_model = markovify.Text(cleaned, state_size=2)#, reject_reg='\[.*?\][ \t\n]*')
         # Turn into json
@@ -70,9 +64,15 @@ def main():
         # TODO: testing user input with init_state
         response = recon_model.make_sentence(init_state=(word,''), tries=10, test_output=True, mot=15) # response = recon_model.make_sentence() 
         if response is None:
-            out = { 'text': "I don't know what to say to that..." }
+            out = {
+                'username': person,
+                'text': "I don't know what to say to that..."
+            }
         else:
-            out = { 'text': response }
+            out = {
+                'username': person,
+                'text': response
+            }
 
         print(json.dumps(out))
       
@@ -114,16 +114,19 @@ def main():
     path = os.path.dirname(os.path.realpath(__file__))
     # print('path', path)
     inputDir = path + '/../texts/'
-    # inputDir = path + '/texts/'
     # print('inputDir', inputDir)
     outputDir = path + '/../models/'
-    # outputDir = path + '/models/'
     # print('outputDir', outputDir)
-    person = 'iliza'
+    # person = 'iliza'
+    # print(sys.argv[1])
+    person = sys.argv[1]
 
-    query = sys.argv[1]
+    query = sys.argv[2]
     if len(query) == 0:
-        out = { 'text': 'anyone there? hello?' }
+        out = {
+            'username': sys.argv[1],
+            'text': 'anyone there? hello?'
+        }
         print(json.dumps(out))
         exit()
     # print(query)

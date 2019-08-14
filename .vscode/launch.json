@@ -12,7 +12,7 @@
       "request": "launch",
       // "program": "${workspaceFolder}/server.js",
       "program": "/home/meegs/Projects/robochat/src/markov.py",
-      "args": ["what do you think of men and women?"],
+      "args": ["davec", "what do you think of men and women?"],
       "justMyCode": false,
     }
   ]

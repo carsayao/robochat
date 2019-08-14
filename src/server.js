@@ -16,6 +16,7 @@ io.on('connection', function(objectSocket) {
   console.log('connection!');
 
   io.emit('message', {
+    'username': "Welcome message",
     'text': 'Welcome to my chatroom!'
   });
 
@@ -29,14 +30,17 @@ io.on('connection', function(objectSocket) {
     function getPython() {
       return spawn('python3', [
         // M: unbuffered output
-        // '-u',
+        '-u',
         path.join(__dirname, 'markov.py'),
+        objectData.strWho,
         objectData.strQuery
       ]);
     }
     const subprocess = getPython();
     subprocess.stdout.on('data', function(data) {
-      io.emit('message', JSON.parse(data.toString()));
+      var dat = JSON.parse(data.toString());
+      console.log(dat);
+      io.emit('message', dat);
     });
     subprocess.stderr.on('data', function(data) {
       console.log(`error:${data}`);

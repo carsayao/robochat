@@ -1,18 +1,20 @@
 var objectSocket = io.connect('http://localhost:8080/');
 
-objectSocket.on('message', function(objectData) {
-  console.log('client objectData',objectData);
-  jQuery('#output')
+objectSocket.on('message', function (objectData) {
+  console.log('client objectData', objectData);
+  $('#output')
     .prepend('> ' + objectData.text + '\n\n')
-  ;
+    ;
 });
 
-jQuery('#submit')
-  .on('click', function() {
-    console.log(jQuery('#message').val())
+$('#submit')
+  .on('click', function () {
+    console.log('who', $("input[type='radio']:checked").attr('id'));
+    console.log('message', $('#message').val());
     objectSocket.emit('message', {
-      'strQuery': jQuery('#message').val()
+      'strWho': $("input[type='radio']:checked").attr('id'),
+      'strQuery': $('#message').val()
     });
     console.log('click');
   })
-;
+  ;

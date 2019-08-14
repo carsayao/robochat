@@ -1,87 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+<head>
+	<title>Lonr</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
 
-		<script type="text/javascript" src="http://localhost:8080/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8080/socket.io/socket.io.js"></script>
 
-		<style type="text/css">
-		  pre {
-				white-space: pre-wrap;
-			}
-		</style>
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="style.css" />
 
-	</head>
-	<body>
+	<style type="text/css">
+	</style>
 
-		<div class="form-group row">
-			<div class="col-sm-8">
-				<div class="form-check">
-					<input id="maria" class="form-check-input" type="radio" name="who">
-					<label class="form-check-label">Maria Bamford</label>
-				</div>
-				<div class="form-check">
-					<input id="davec" class="form-check-input" type="radio" name="who">
-					<label class="form-check-label">Dave Chappelle</label>
-				</div>
-				<div class="form-check">
-					<input id="louis" class="form-check-input" type="radio" name="who">
-					<label class="form-check-label">Louis CK</label>
-				</div>
-				<div class="form-check">
-					<input id="johnm" class="form-check-input" type="radio" name="who">
-					<label class="form-check-label">John Mulaney</label>
-				</div>
-				<div class="form-check">
-					<input id="iliza" class="form-check-input" type="radio" name="who">
-					<label class="form-check-label">Iliza Shlesinger</label>
-				</div>
-				<div class="form-check">
-					<input id="bible" class="form-check-input" type="radio" name="who">
-					<label class="form-check-label">King James Bible</label>
-				</div>
-			</div>
-		</div>
+</head>
 
-		<input id="message" type="text" placeholder="message">
-		<!-- <input id="submit" type="button" value="submit"> -->
-		<button id="submit" class="btn btn-primary" type="submit">submit</button>
+<body>
 
-		<br>
-		<pre id="output"></pre>
+	<table>
+		<tbody>
+			<tr>
+
+				<td>
+					<div class="card">
+						<div class="card-header">Chatroom</div>
+						<div class="card-body">
+							<ul class="nav flex-column">
+								<div class="form-check">
+									<label class="form-check-label">
+										<input id="maria" class="form-check-input" type="radio" name="who">
+										<img class="circular--square" src="/images/maria.jpeg" width="70" height="70" />
+										Maria Bamford
+									</label>
+								</div>
+								<div class="form-check">
+									<label class="form-check-label">
+										<input id="davec" class="form-check-input" type="radio" name="who">
+										<img class="circular--square" src="/images/davec.jpg" width="70" height="70" />
+										Dave Chappelle
+									</label>
+								</div>
+								<div class="form-check">
+									<label class="form-check-label">
+										<input id="johnm" class="form-check-input" type="radio" name="who">
+										<img class="circular--square" src="/images/johnm.jpeg" width="70" height="70" />
+										John Mulaney
+									</label>
+								</div>
+								<div class="form-check">
+									<label class="form-check-label">
+										<input id="brian" class="form-check-input" type="radio" name="who">
+										<img class="circular--square" src="/images/brian.jpeg" width="70" height="70" />
+										Brian Regan
+									</label>
+								</div>
+								<div class="form-check">
+									<label class="form-check-label">
+										<input id="iliza" class="form-check-input" type="radio" name="who">
+										<img class="circular--square" src="/images/iliza.jpeg" width="70" height="70" />
+										Iliza Shlesinger
+									</label>
+								</div>
+								<div class="form-check">
+									<label class="form-check-label">
+										<input id="bible" class="form-check-input" type="radio" name="who">
+										<img class="circular--square" src="/images/bible.jpeg" width="70" height="70" />
+										King James Bible
+									</label>
+								</div>
+								<!-- <div class="form-check">
+									<label class="form-check-label">
+										<input id="all" class="form-check-input" type="radio" name="who">
+										<img class="circular--square" src="/images/all.jpeg" width="70" height="70" />
+										All People
+									</label>
+								</div> -->
+							</ul>
+						</div>
+					</div>
+				</td>
+
+				<td>
+					<div class="card" style="border-style:none;">
+						<div class="card-header bg-transparent border-0"></div>
+						<div class="card-body">
+							<div class="form-group">
+								<div class="chat-messages" id="chat-messages">
+									<div class="empty-val"></div>
+								</div>
+								<div class="input-group">
+									<input class="form-control" id="message" type="text" placeholder="message">
+									<button id="submit" class="btn btn-primary" type="submit">submit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
 
 
-		<!-- <script src="client.js"></script> -->
-		<script type="text/javascript">
-			var objectSocket = io.connect('http://localhost:8080/');
+	<!-- <script src="client.js"></script> -->
+	<script type="text/javascript">
+		var objectSocket = io.connect('http://localhost:8080/');
 
-			objectSocket.on('message', function(objectData) {
-				console.log('client objectData',objectData);
-				$('#output')
-					.prepend('> ' + objectData.text + '\n\n')
+		objectSocket.on('message', function (objectData) {
+			console.log('client objectData', objectData);
+			$('#chat-messages')
+				.prepend("<p>" + "<strong>" + objectData.username + ": </strong>" + objectData.text + "</p>")
 				;
-      });
-      
-      $('#submit')
-        .on('click', function() {
-					console.log('who', $("form input[type='radio']:checked").val());
-					console.log('message', $('#message').val());
-          objectSocket.emit('message', {
-						'strWho': $("form input[type='radio']:checked").val(),
-            'strQuery': $('#message').val()
-          });
-          console.log('click');
-        })
-      ;
+		});
 
-		</script>
+		$('#submit')
+			.on('click', function () {
+				if ($("input[type='radio']:checked").attr('id') == undefined) {
+					$('#chat-messages')
+						.prepend("<p><strong>Error: </strong>Select a guest!</p>");
+					return;
+				}
+				console.log('who', $("input[type='radio']:checked").attr('id'));
+				console.log('message', $('#message').val());
+				$("#chat-messages").prepend("<p>" + "<strong>You: </strong>" + $('#message').val()) + "</p>";
+				objectSocket.emit('message', {
+					'strWho': $("input[type='radio']:checked").attr('id'),
+					'strQuery': $('#message').val()
+				});
+				console.log('click');
+			});
 
-	</body>
+	</script>
+
+</body>
+
 </html>
