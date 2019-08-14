@@ -29,6 +29,10 @@ body {
     padding: 20px;
 }
 
+.form-group {
+    margin-left: 20px;
+}
+
 /* https://stackoverflow.com/a/44390134 */
 /* SELECT */
 .form-check-label {
