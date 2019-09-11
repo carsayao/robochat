@@ -1,5 +1,5 @@
 {
-  "name": "src",
+  "name": "Lonr",
   "version": "0.2.0",
   "description": "Simple Markov chatbot",
   "main": "server.js",
