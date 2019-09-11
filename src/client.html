@@ -111,7 +111,8 @@
 
 	<!-- <script src="client.js"></script> -->
 	<script type="text/javascript">
-		var objectSocket = io.connect('http://localhost:8080/');
+		// var objectSocket = io.connect('http://localhost:8080/');
+		var objectSocket = io.connect('http://robochat.appspot.com');
 
 		objectSocket.on('message', function (objectData) {
 			console.log('client objectData', objectData);
