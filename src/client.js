@@ -1,3 +1,6 @@
+// Unused
+
+
 var objectSocket = io.connect('http://localhost:8080/');
 
 objectSocket.on('message', function (objectData) {
