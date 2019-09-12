@@ -60,6 +60,7 @@ io.on('connection', function(objectSocket) {
 
   objectSocket.on('disconnect', function() {
     console.log('disconnection!');
+    io.emit('clientDisconnect');
   });
 
 });

@@ -122,6 +122,13 @@
 				;
 		});
 
+    objectSocket.on('clientDisconnect', function(objectData) {
+      console.log('clientDisconnect');
+			$('#chat-messages')
+				.prepend("<p>" + "disconnect" + "</p>")
+				;
+    });
+
 		$('#submit')
 			.on('click', function () {
 				if ($("input[type='radio']:checked").attr('id') == undefined) {
