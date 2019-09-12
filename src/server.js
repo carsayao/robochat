@@ -13,9 +13,11 @@ server.use('/', express.static(__dirname + '/'));
 var io = socket(server.listen(process.env.PORT || 8080));
 
 server.get('/', (req, res) => {
-  res.status(302);
-  res.set({ 'content-type': 'text/plain' });
-  res.redirect('/client.html');
+  // res.status(302);
+  // res.set({ 'content-type': 'text/plain' });
+  // res.redirect('/client.html');
+
+  res.sendFile(__dirname + '/client.html');
 });
 
 io.on('connection', function(objectSocket) {
@@ -45,7 +47,7 @@ io.on('connection', function(objectSocket) {
     const subprocess = getPython();
     subprocess.stdout.on('data', function(data) {
       var dat = JSON.parse(data.toString());
-      console.log(dat);
+      console.log("dat",dat);
       io.emit('message', dat);
     });
     subprocess.stderr.on('data', function(data) {
