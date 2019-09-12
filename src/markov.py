@@ -1,3 +1,5 @@
+# name of person sys.arg[1], query sys.arg[2]
+
 import markovify
 import datetime
 import random
