@@ -11,7 +11,7 @@ var server = express();
 
 server.use('/', express.static(__dirname + '/'));
 
-var io = socket(server.listen(process.env.PORT || 8080));
+var io = socket(server.listen(process.env.PORT || "8080"));
 
 var start = Date.now();
 
