@@ -34,7 +34,7 @@ io.on('connection', function(objectSocket) {
 
   io.emit('message', {
     'username': "Welcome message",
-    'text': 'Welcome to my chatroom!'
+    'text': "Welcome to my chatroom!"
   });
 
   objectSocket.on('message', function(objectData) {
@@ -59,12 +59,17 @@ io.on('connection', function(objectSocket) {
     subprocess.stdout.on('data', function(data) {
       var dat = JSON.parse(data.toString());
       // console.log("dat",dat);
-      console.log(getTime(), "dat",dat);
+      console.log(getTime(), typeof dat, "dat", dat);
+      var time = getTime();
       io.emit('message', dat);
     });
     subprocess.stderr.on('data', function(data) {
       // console.log(`error:${data}`);
       console.log(getTime(), `error:${data}`);
+      io.emit('message', {
+        'strWho': "python failed on 'data'",
+        'strQuery': ""
+      });
     });
     subprocess.stderr.on('close', function() {
       // console.log("Closed");
