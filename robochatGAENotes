@@ -1,0 +1,10 @@
+Robochat
+- Find out how to output console logs in gae
+- What happens when multiple people connect on localhost?
+Python
+- Try to run just the python file on gae
+- Check that the python is running correctly in the node.js gae environment. (Add case handling on the server side.)
+
+use jquery submit event
+
+try getting the 465 socketio to deploy?
