@@ -77,7 +77,7 @@ io.on('connection', function(objectSocket) {
     });
   });
 
-  objectSocket.on('disconnect', function() {
+  objectSocket.on('clientDisconnect', function() {
     // console.log('disconnection!');
     console.log(getTime(), 'disconnection!');
     io.emit('clientDisconnect');
