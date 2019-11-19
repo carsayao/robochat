@@ -34,7 +34,8 @@ io.on('connection', function(objectSocket) {
 
   io.emit('message', {
     'username': "Welcome message",
-    'text': "Welcome to my chatroom!"
+    // 'text': "Welcome to my chatroom!"
+    'text': "Welcome to my chatroom! Due to issues with the Google App Engine, this website is still under construction."
   });
 
   objectSocket.on('message', function(objectData) {
@@ -77,7 +78,7 @@ io.on('connection', function(objectSocket) {
     });
   });
 
-  objectSocket.on('disconnect', function() {
+  objectSocket.on('clientDisconnect', function() {
     // console.log('disconnection!');
     console.log(getTime(), 'disconnection!');
     io.emit('clientDisconnect');

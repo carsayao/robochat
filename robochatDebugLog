@@ -1,0 +1,45 @@
+2019-10-03 00:37:12 default[20191001t175134]
+2019-10-03 00:37:14 default[20191001t175134]  1.083 'connection!'
+2019-10-03 00:37:16 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=polling&t=MsF3Av-" 200
+2019-10-03 00:37:16 default[20191001t175134]  2.609 'connection!'
+2019-10-03 01:17:47 default[20191001t175134]  2433.802 'objectData.strWho' 'maria'
+2019-10-03 01:17:47 default[20191001t175134]  2433.803 'objectData.strQuery' 'hey'
+2019-10-03 01:17:47 default[20191001t175134]  events.js:174
+2019-10-03 01:17:47 default[20191001t175134]        throw er; // Unhandled 'error' event
+2019-10-03 01:17:47 default[20191001t175134]        ^
+2019-10-03 01:17:47 default[20191001t175134]
+2019-10-03 01:17:47 default[20191001t175134]  Error: spawn python3 ENOENT      at Process.ChildProcess._handle.onexit (internal/child_process.js:240:19)      at onErrorNT (internal/child_process.js:415:16)      at process._tickCallback (internal/process/next_tick.js:63:19)
+2019-10-03 01:17:47 default[20191001t175134]  Emitted 'error' event at:
+2019-10-03 01:17:47 default[20191001t175134]      at Process.ChildProcess._handle.onexit (internal/child_process.js:246:12)
+2019-10-03 01:17:47 default[20191001t175134]      at onErrorNT (internal/child_process.js:415:16)
+2019-10-03 01:17:47 default[20191001t175134]      at process._tickCallback (internal/process/next_tick.js:63:19)
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR! code ELIFECYCLE
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR! errno 1
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR! robochat@0.2.0 start: `node ./server.js`
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR! Exit status 1
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR!
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR! Failed at the robochat@0.2.0 start script.
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2019-10-03 01:17:47 default[20191001t175134]
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR! A complete log of this run can be found in:
+2019-10-03 01:17:47 default[20191001t175134]  npm ERR!     /root/.npm/_logs/2019-10-03T01_17_47_312Z-debug.log
+2019-10-03 01:17:48 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=polling&t=MsFCSjM" 502
+2019-10-03 01:17:48 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=polling&t=MsFCSrM" 502
+2019-10-03 01:17:50 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=polling&t=MsFCTEL" 502
+2019-10-03 01:17:51 default[20191001t175134]
+2019-10-03 01:17:51 default[20191001t175134]  > robochat@0.2.0 start /app
+2019-10-03 01:17:51 default[20191001t175134]  > node ./server.js
+2019-10-03 01:17:51 default[20191001t175134]
+2019-10-03 01:17:55 default[20191001t175134]  3.988 'connection!'
+2019-10-03 01:17:56 default[20191001t175134]  4.861 'connection!'
+2019-10-03 01:21:51 default[20191001t175134]  239.396 'disconnection!'
+2019-10-03 01:21:51 default[20191001t175134]  0.795 'disconnection!'
+2019-10-03 01:22:21 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=websocket&sid=Z_1uiOfCioPwekqFAAAA" 101
+2019-10-03 01:22:21 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=websocket&sid=OLTx1F5sH5LsVU9kAAAB" 101
+2019-10-03 01:27:42 default[20191001t175134]  350.486 'connection!'
+2019-10-03 01:28:33 default[20191001t175134]  401.987 'connection!'
+2019-10-03 01:28:34 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=polling&t=MsFEwLe&sid=aXuiJ2RXOIGlsnD8AAAD" 200
+2019-10-03 01:28:34 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=polling&t=MsFEwNb&sid=aXuiJ2RXOIGlsnD8AAAD" 200
+2019-10-03 01:29:59 default[20191001t175134]  487.317 'disconnection!'
+2019-10-03 01:30:01 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=websocket&sid=aXuiJ2RXOIGlsnD8AAAD" 101
+2019-10-03 01:30:06 default[20191001t175134]  "GET /socket.io/?EIO=3&transport=websocket&sid=RplEsM4a2-qPRwGGAAAC" 101

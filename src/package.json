@@ -1,5 +1,5 @@
 {
-  "name": "Lonr",
+  "name": "robochat",
   "version": "0.2.0",
   "description": "Simple Markov chatbot",
   "main": "server.js",
