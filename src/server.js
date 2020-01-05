@@ -6,12 +6,16 @@ var socket = require('socket.io');
 var assert = require('assert');
 const path = require('path');
 const { spawn } = require('child_process');
+const port = 8080;
 
 var server = express();
 
 server.use('/', express.static(__dirname + '/'));
 
-var io = socket(server.listen(process.env.PORT || "8080"));
+// var io = socket(server.listen(process.env.PORT || "8080"));
+var io = socket(server.listen(port,
+  () => console.log(`Listening on port ${port}!`)
+));
 
 var start = Date.now();
 
