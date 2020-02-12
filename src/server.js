@@ -29,7 +29,7 @@ server.get('/', (req, res) => {
   // res.set({ 'content-type': 'text/plain' });
   // res.redirect('/client.html');
 
-  res.sendFile(__dirname + '/client.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(objectSocket) {
