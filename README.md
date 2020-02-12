@@ -43,7 +43,7 @@ nltk.download('averaged_perceptron_tagger')
 
 ## run
 
-Run `node server.js` then open http://localhost:8080/client.html.
+Run `node server.js` then open localhost:8080/
 
 ## todo
 

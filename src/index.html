@@ -121,7 +121,9 @@
 			return (Date.now() - start) / 1000;
 		};
 		
+    // Google App Engine
 		// var objectSocket = io.connect('http://robochat.appspot.com');
+    // Localhost
 		var objectSocket = io.connect('http://localhost:8080/');
 		// var objectSocket = io.connect('http://localhost:8080/', () => {
 		// 	console.log(getTime(), "objectSocket");
