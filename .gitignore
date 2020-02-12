@@ -1,9 +1,11 @@
 .gcloudignore
-*workspace
+
 __pycache__
-node_modules/
-#models/
-*.swp
-*.swo
 env/
+
+node_modules/
+
+*.sw*
+
 .vscode/
+*workspace
