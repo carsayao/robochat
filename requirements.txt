@@ -2,6 +2,6 @@
 git+https://github.com/carsayao/markovify.git
 simplejson==3.16.0
 nltk==3.4.5
-numpy==1.16.4
+numpy==1.22.0
 # run the following command:
 # pip3 install -r requirements.txt
