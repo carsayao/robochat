@@ -7,26 +7,27 @@ Speak to a person of your choice!
 Requires node, express, socketio.
 
 ### virtualenv
-    pip3 install virtualenv
+
+    python3 -m pip install virtualenv
 
     virtualenv -p python3 env
 
-This will install virtualenv using pip3 and create a an `env` folder that will contain the libraries brought it.
+This will install virtualenv using pip and create a an `env` folder that will contain the libraries brought it.
+
+_Note_: Invoking pip on its own will use the system python (`python3 -m pip install`) rather than `pip3 install virtualenv`, which may use a different pip3 package.
 
     source env/bin/activate
 
 This will put your shell into the virtual environment where you will have the libraries brought it.
 
-    pip3 install -r requirements.txt
+    python3 -m pip install -r requirements.txt
     
-This will install the libraries that are found in the `requirements.txt`
-When you are done working, use `deactivate` to get out of the virtual environment
+This will install the libraries that are found in the `requirements.txt`. When you are done working, use `deactivate` to get out of the virtual environment.
 
 ### additional required packages
 
 Requirements for python:
 - python3
-- pip3 (package manager)
 - markovify (custom)
 - simplejson 3.16.0
 - nltk 3.4.4
